@@ -1,8 +1,8 @@
 {
-  "name": "app.js",
+  "name": "frontend",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "",
+  "author": "3kk-1st <3kk1st@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -13,7 +13,6 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -77,18 +76,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "main": ".eslintrc.js",
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/3kk-1st/mobius_vue_express.git"
-  },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/3kk-1st/mobius_vue_express/issues"
-  },
-  "homepage": "https://github.com/3kk-1st/mobius_vue_express#readme"
+  ]
 }
