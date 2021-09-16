@@ -11,6 +11,8 @@ var app = express();
 
 var mysql = require('mysql');
 
+
+//Connect insert
 var connection = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
@@ -26,6 +28,24 @@ console.error(err);
 throw err;
 }
 });
+
+// insert
+app.post('regist',function (req, res ) {
+var user = {
+	'userid' : req.body.userid,
+	'name' : req.body.name,
+	'address' : req.body.address
+};
+var query = connection.query('insert into user set ? ', user, function (err , result) {
+if (err) {
+console.error(err);
+	throw err;
+}
+res.status(200).send('success');
+});
+});
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
