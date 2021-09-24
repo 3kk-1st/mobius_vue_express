@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+https://wiselog.tistory.com/2
+- MQTT Mosquitto websockets install instructions for linux 

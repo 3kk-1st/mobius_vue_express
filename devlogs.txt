@@ -1,2 +1,0 @@
-https://wiselog.tistory.com/2
-- MQTT Mosquitto websockets install instructions for linux 
