@@ -12,7 +12,7 @@ var app = express();
 var mysql = require('mysql');
 
 
-//Connect insert
+//SQL Connections
 var connection = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
@@ -20,16 +20,34 @@ var connection = mysql.createConnection({
 	password: 'idb1004#',
 	database: 'pwa_crud'
 });
-//connect
+var mob_db_connection = mysql.createConnection({
+	host: 'localhost',
+	port: 3306,
+	user: 'root',
+	password: 'idb1004#',
+	database: 'mobiusdb'
+})
+
+//Connect Connections
 connection.connect(function (err){
 	if(err){
-console.error('mysql connection error');
+console.error('mysql pwa_crud connection error');
 console.error(err);
 throw err;
 }
 });
 
-// insert
+mob_db_connection.connect(function (err){
+	if(err){
+console.error('mysql mobiusdb connection error');
+console.error(err);
+throw err;
+	}
+})
+
+// MySQL REST API Calls
+
+//Login / User Related Calls
 app.post('regist',function (req, res ) {
 var user = {
 	'userid' : req.body.userid,
@@ -45,6 +63,14 @@ res.status(200).send('success');
 });
 });
 
+//Mobius DB Calls
+app.get('/api/mob_cnt', function (req, res) {
+	connection.query('SELECT ri FROM mobiusdb.cnt', function (err, rows) {
+	  if (err) throw err;
+	  let result = JSON.parse(JSON.stringify(rows))
+	  res.send(result);
+	});
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
