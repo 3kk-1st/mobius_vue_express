@@ -64,6 +64,15 @@ res.status(200).send('success');
 });
 
 //Mobius DB Calls
+
+app.get('/api/mob_ae', function (req, res) {
+	connection.query('SELECT ri FROM mobiusdb.ae', function (err, rows) {
+	  if (err) throw err;
+	  let result = JSON.parse(JSON.stringify(rows))
+	  res.send(result);
+	});
+  });
+
 app.get('/api/mob_cnt', function (req, res) {
 	connection.query('SELECT ri FROM mobiusdb.cnt', function (err, rows) {
 	  if (err) throw err;

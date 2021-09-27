@@ -21,10 +21,13 @@ export default {
   data () {
     return {
       nodes: [
-        { id: 1, name: 'Mobius Server' , _cssClass: 'node pinned', pinned: true, fx: window.innerWidth / 2, fy: window.innerHeight / 2},
+        { id: 0, name: 'Mobius Server' , _cssClass: 'node pinned', pinned: true, fx: window.innerWidth / 2, fy: window.innerHeight / 2},
       ],
       links: [],
+      rawAe: [],
+      aeNodeRef: {},  //object --> {key: aename val: [node obj, link obj], ...} store reference to nodes and links 
       rawCnt: [],
+      cntNodeRef: {}, //object --> {key: cntname val:[node obj, link obj], ...} store reference to nodes and links
       options:
       {
         force: 3000,
@@ -37,37 +40,43 @@ export default {
   created () {
     let vm = this
 
+    //connect to get aes
+    this.$http.get('/api/mob_ae')
+      .then((response) => {
+        //on response
+        response.data.forEach(function(obj) {
+          console.log(obj.ri)
+
+          //add to rawAe array and store references to Ae nodes
+          vm.rawAe.push(obj.ri)
+          let nodelink = vm.addNode(0, obj.ri)
+          vm.aeNodeRef[nodelink[0].name] = nodelink
+        })
+      })
+
+    //connect to get cnts
+    //use ae data to connect cnts
     this.$http.get('/api/mob_cnt')
         .then((response) => {
-          console.log(typeof response.data)
-          console.log(response.data)
+          //on response
           response.data.forEach(function(obj) {
             console.log(obj.ri)
+
+            //
             vm.rawCnt.push(obj.ri)
-            vm.addNode(1, obj.ri)
+            let nodelink = vm.addCnt(obj.ri)
+            vm.cntNodeRef[nodelink[0].name] = nodelink
           });
         });
-    console.log('right here');
-    console.log(this.rawCnt);
-    //this.formatCnt(this.rawCnt);
-    console.log(this.nodes)
-    console.log('done')
-  },
-  computed: {  //if everything goes to 0, 0 remove custom forces from d3-network in template part
-  //if you need it, put it back as :customForces="customForces" or something similar
-    customForces() {
-      return {
-      X: -500,
-      Y: -500,
-      ManyBody: true
-      }
-    }
+    
+    
   },
   methods: {
     addLink(id_to_link, curr_id) {
       let vm = this 
 
       vm.links.push({sid: id_to_link, tid: curr_id}) //sid = source id / tid = target id 
+      return vm.links.at(-1)
     },
     addNode(id_to_link, name) { //id_to_link is id to link to, name is name of node  // change id_to_link to tid?
       let vm = this
@@ -75,28 +84,28 @@ export default {
       var highest_id = this.nodes.at(-1)["id"]
       highest_id = highest_id + 1
       vm.nodes.push({id: highest_id, name: name})
-      vm.addLink(id_to_link, highest_id)
-    },
-    formatCnt(raw) {
-      let vm = this;
+      let node = vm.nodes.at(-1)
+      let link = vm.addLink(id_to_link, highest_id)
 
-      console.log('hi');
-      let arr_len = raw.length;
-      console.log(arr_len);
-      console.log(typeof raw)
-      console.log(raw)
-      console.log(Object.values(raw));
-      for (var i = 0; i < arr_len; i++) {
-        console.log(i);
-        console.log(raw[i]);
-      }
-      raw.forEach(function(ri_obj) {
-        console.log('inside');
-        console.log(ri_obj);
-        console.log(ri_obj.ri);
-        vm.addNode(1, ri_obj.ri); //1 is mobius server node, name is name of cnt
-      });
-      console.log(vm.nodes);
+      //return reference to most recently added node, link 
+
+      return [node, link]
+    },
+    addCnt(name) {
+      //relation between cnt names and ae names:
+      // cnt: Mobius/srpi4/radar
+      // ae: Mobius/srpi4
+      let name_str = name.toString()
+      let split_cnt = name_str.split('/')
+      split_cnt.pop() //remove last element, radar in example
+      split_cnt = split_cnt.join('/') //joins string again
+      
+      let ref = this.aeNodeRef[split_cnt]  //retrieve reference
+      let node = ref[0] //get ae node
+      
+      let nodelink = this.addNode(node.id, name_str) //add node get returned refs
+
+      return nodelink
     }
   }
 }

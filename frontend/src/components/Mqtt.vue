@@ -153,6 +153,9 @@
 
 <template>
     <div id='mqtt-container'>
+
+        <!--flexbox for connect options and connecting -->
+
         <div class='flex-config'>
             <div class='flex-config-input'>
                 <p>Host</p>
@@ -167,10 +170,65 @@
                 <input v-model="connection.endpoint" placeholder="/mqtt">
             </div>
             <div class='flex-config-input'>
-                <div class='button-submit'>
+                <button class='button-submit' v-on:click='createConnection'>Connect</button>
+                <button class='button-submit' v-on:click='destroyConnection'>Disconnect</button>
             </div>
+            <div class='flex-config-input'>
+                <div class='display-status'>
+                    <p>Currently client connected status is: {{ client.connected }}</p>
+                </div>
             </div>
         </div>
+
+        <!--flexbox for subscribe -->
+
+        <div class='flex-config'>
+            <div class='flex-config-input'>
+                <p>Host</p>
+                <input v-model="subscription.topic" placeholder="topic/mqttx">
+            </div>
+            <div class='flex-config-input'>
+                <p>Port</p>
+                <input v-model.number="subscription.qos" placeholder="0">
+            </div>
+            <div class='flex-config-input'>
+                <button class='button-submit' v-on:click='doSubscribe'>Subscribe</button>
+                <button class='button-submit' v-on:click='doUnSubscribe'>Unsubscribe</button>
+            </div>
+            <div class='flex-config-input'>
+                <div class='display-status'>
+                    <p>Currently client subscribed status is: {{ subscribeSuccess }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- flexbox for publish -->
+
+        <div class='flex-config'>
+            <div class='flex-config-input'>
+                <p>Host</p>
+                <input v-model="publish.topic" placeholder="topic/mqttx">
+            </div>
+            <div class='flex-config-input'>
+                <p>Port</p>
+                <input v-model.number="subscription.qos" placeholder="0">
+            </div>
+            <div class='flex-config-input'>
+                <p>Host</p>
+                <input v-model="publish.payload">
+            </div>
+            <div class='flex-config-input'>
+                <button class='button-submit' v-on:click='doPublish'>Publish</button>
+            </div>
+        </div>
+
+        <!-- flexbox for received inputs -->
+        <div class='flex-config'>
+            <div class='flex-config-input'>
+                <input id='message-box' v-model='receiveNews'>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -185,7 +243,7 @@ export default {
       connection: {
         host: '192.168.0.130',
         port: 9001,
-        endpoint: '',
+        endpoint: '/mqtt',
         clean: true, // 保留会话
         connectTimeout: 4000, // 超时时间
         reconnectPeriod: 4000, // 重连时间间隔
@@ -201,7 +259,7 @@ export default {
       publish: {
         topic: 'topic/mqttx',
         qos: 0,
-        payload: '{ "msg": "Hello, I am browser." }',
+        payload: '{"m2m:cin":{"rn":"4-20210927054208137","ty":4,"pi":"3-20210909042538192575","ri":"4-20210927054208137881","ct":"20210927T054208","lt":"20210927T054208","st":7992,"et":"20230927T054208","cs":14,"con":{"key":"7735"},"cr":"Srpi4"}}',
       },
       receiveNews: '',
       qosList: [
@@ -245,6 +303,9 @@ export default {
       this.client.on('message', (topic, message) => {
         this.receiveNews = this.receiveNews.concat(message)
         console.log(`Received message ${message} from topic ${topic}`)
+        let json_ver = JSON.parse(message)
+        
+        console.log('Sent Message')
       })
     },
     // 订阅主题
@@ -298,6 +359,8 @@ export default {
 <style scoped>
 #mqtt-container{
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
 }
@@ -307,7 +370,17 @@ export default {
 .flex-config-input {
     flex: 1
 }
-</style>
+.button-submit {
+    color:mediumseagreen
+}
+.display-status {
+    color:darkslategray
+}
+#message-box {
+    width: 50%;
+    height: 100px;
+}
+</style>s
 
 
 <!--
