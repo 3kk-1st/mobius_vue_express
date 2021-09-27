@@ -1,19 +1,22 @@
 <template>
   <div id="container">
+    <Mqtt />
     <d3-network :net-nodes="nodes" :net-links="links" :options="options"/>
     <!--<button v-on:click="addNode">Add 1 Node</button>-->
+
   </div>
   
 </template>
 
 <script>
 import D3Network from 'vue-d3-network'
-//import * as forceSimulation from 'd3-force'
-//const d3 = Object.assign({}, forceSimulation)
+import Mqtt from './Mqtt.vue'
+
 
 export default {
   components: {
-    D3Network
+    D3Network,
+    Mqtt
   },
   data () {
     return {
@@ -22,7 +25,6 @@ export default {
       ],
       links: [],
       rawCnt: [],
-      //processedCnt: [],
       options:
       {
         force: 3000,
@@ -46,6 +48,7 @@ export default {
           });
         });
     console.log('right here');
+    console.log(this.rawCnt);
     //this.formatCnt(this.rawCnt);
     console.log(this.nodes)
     console.log('done')

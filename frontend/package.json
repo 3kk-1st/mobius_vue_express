@@ -10,9 +10,12 @@
   "dependencies": {
     "axios": "^0.21.4",
     "core-js": "^3.6.5",
+    "mqtt": "^4.2.8",
     "vue": "^2.6.11",
     "vue-d3-network": "^0.1.28",
-    "vue-router": "^3.5.2"
+    "vue-router": "^3.5.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
