@@ -51,3 +51,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.input_row{
+position: relative;
+margin: 10px 0;
+}
+</style>
