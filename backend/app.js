@@ -13,7 +13,7 @@ var mysql = require('mysql');
 
 
 //SQL Connections
-var connection = mysql.createConnection({
+var crud_connection = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
 	user: 'root',
@@ -29,7 +29,7 @@ var mob_db_connection = mysql.createConnection({
 })
 
 //Connect Connections
-connection.connect(function (err) {
+crud_connection.connect(function (err) {
 	if (err) {
 		console.error('mysql pwa_crud connection error');
 		console.error(err);
@@ -52,9 +52,9 @@ app.post('/api/users/signUp', function (req, res) {
 	var user = {
 		'userid': req.body.userid,
 		'name': req.body.name,
-		'address': req.body.address
+		'password': req.body.password
 	};
-	var query = connection.query('insert into user set ? ', user, function (err, result) {
+	var query = crud_connection.query('insert into user set ? ', user, function (err, result) {
 		if (err) {
 			console.error(err);
 			throw err;
@@ -63,10 +63,24 @@ app.post('/api/users/signUp', function (req, res) {
 	});
 });
 
+app.post('/api/users/login', function (req, res) {
+	var user = {
+		'userid': req.body.userid,
+		'password': req.body.password
+	};
+	var query = crud_connection.query('select password from pwa_crud.users where id = user.userid', user, function (err, result) {
+		if (err) {
+			console.error(err);
+			throw err;
+		}
+		
+	});
+});
+
 //VueGraph API Calls
 
 app.get('/api/mob_ae', function (req, res) {
-	connection.query('SELECT ri FROM mobiusdb.ae', function (err, rows) {
+	mob_db_connection.query('SELECT ri FROM mobiusdb.ae', function (err, rows) {
 		if (err) throw err;
 		let result = JSON.parse(JSON.stringify(rows))
 		res.send(result);
@@ -74,7 +88,7 @@ app.get('/api/mob_ae', function (req, res) {
 });
 
 app.get('/api/mob_cnt', function (req, res) {
-	connection.query('SELECT ri FROM mobiusdb.cnt', function (err, rows) {
+	mob_db_connection.query('SELECT ri FROM mobiusdb.cnt', function (err, rows) {
 		if (err) throw err;
 		let result = JSON.parse(JSON.stringify(rows))
 		res.send(result);
