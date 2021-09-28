@@ -2,17 +2,17 @@
   <div>
     <div class="input_row">
       <label for="id"> 아이디 </label>
-      <input type="text" id="id" v-modle="user.userid" />
+      <v-text-field id="id" v-model="user.userid" />
     </div>
     <div class="input_row">
       <label for="name"> 이름 </label>
-      <input type="text" id="name" v-modle="user.name" />
+      <v-text-field  id="name" v-model="user.name" />
     </div>
     <div class="input_row">
       <label for="password"> 비밀번호 </label>
-      <input type="password" id="id" v-modle="user.password" />
+      <v-text-field id="password" v-model="user.password" />
     </div>
-    <button v-on:click="signUp">가입하기</button>
+    <v-btn elevation="2" v-on:click="signUp">가입하기</v-btn>
     <router-link :to="{ name: 'Login'}"> 
   </div>
 </template>

@@ -16,12 +16,12 @@ export const router = new Router({
       component: Login
     },
     {
-      path: '/',
+      path: '/signup',
       name: 'SignUp',
       component: SignUp
     },
     {
-      path: '/graph',
+      path: '/',
       name: 'VueGraph',
       component: VueGraph
     },

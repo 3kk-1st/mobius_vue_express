@@ -6,19 +6,19 @@
         <div class='flex-config'>
             <div class='flex-config-input'>
                 <p>Host</p>
-                <input v-model="connection.host" placeholder="localhost">
+                <v-text-field v-model="connection.host" placeholder="localhost">
             </div>
             <div class='flex-config-input'>
                 <p>Port</p>
-                <input v-model.number="connection.port" placeholder="9001">
+                <v-text-field v-model.number="connection.port" placeholder="9001">
             </div>
             <div class='flex-config-input'>
                 <p>Mountpoint / Endpoint</p>
-                <input v-model="connection.endpoint" placeholder="/mqtt">
+                <v-text-field v-model="connection.endpoint" placeholder="/mqtt">
             </div>
             <div class='flex-config-input'>
-                <button class='button-submit' v-on:click='createConnection'>Connect</button>
-                <button class='button-submit' v-on:click='destroyConnection'>Disconnect</button>
+                <v-btn class='button-submit' v-on:click='createConnection'>Connect</v-btn>
+                <v-btn class='button-submit' v-on:click='destroyConnection'>Disconnect</v-btn>
             </div>
             <div class='flex-config-input'>
                 <div class='display-status'>
@@ -32,15 +32,15 @@
         <div class='flex-config'>
             <div class='flex-config-input'>
                 <p>Host</p>
-                <input v-model="subscription.topic" placeholder="topic/mqttx">
+                <v-text-field v-model="subscription.topic" placeholder="topic/mqttx">
             </div>
             <div class='flex-config-input'>
                 <p>Port</p>
-                <input v-model.number="subscription.qos" placeholder="0">
+                <v-text-field v-model.number="subscription.qos" placeholder="0">
             </div>
             <div class='flex-config-input'>
-                <button class='button-submit' v-on:click='doSubscribe'>Subscribe</button>
-                <button class='button-submit' v-on:click='doUnSubscribe'>Unsubscribe</button>
+                <v-btn class='button-submit' v-on:click='doSubscribe'>Subscribe</v-btn>
+                <v-btn class='button-submit' v-on:click='doUnSubscribe'>Unsubscribe</v-btn>
             </div>
             <div class='flex-config-input'>
                 <div class='display-status'>
@@ -54,25 +54,25 @@
         <div class='flex-config'>
             <div class='flex-config-input'>
                 <p>Host</p>
-                <input v-model="publish.topic" placeholder="topic/mqttx">
+                <v-text-field v-model="publish.topic" placeholder="topic/mqttx">
             </div>
             <div class='flex-config-input'>
                 <p>Port</p>
-                <input v-model.number="subscription.qos" placeholder="0">
+                <v-text-field v-model.number="subscription.qos" placeholder="0">
             </div>
             <div class='flex-config-input'>
                 <p>Host</p>
-                <input v-model="publish.payload">
+                <v-text-field v-model="publish.payload">
             </div>
             <div class='flex-config-input'>
-                <button class='button-submit' v-on:click='doPublish'>Publish</button>
+                <v-btn class='button-submit' v-on:click='doPublish'>Publish</v-btn>
             </div>
         </div>
 
         <!-- flexbox for received inputs -->
         <div class='flex-config'>
             <div class='flex-config-input'>
-                <input id='message-box' v-model='receiveNews'>
+                <v-text-field id='message-box' v-model='receiveNews'>
             </div>
         </div>
 
