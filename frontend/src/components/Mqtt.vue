@@ -259,7 +259,33 @@ export default {
       publish: {
         topic: 'topic/mqttx',
         qos: 0,
-        payload: '{"m2m:cin":{"rn":"4-20210927054208137","ty":4,"pi":"3-20210909042538192575","ri":"4-20210927054208137881","ct":"20210927T054208","lt":"20210927T054208","st":7992,"et":"20230927T054208","cs":14,"con":{"key":"7735"},"cr":"Srpi4"}}',
+        payload: `
+        {"op":5,"rqi":"rs3Zy8lrqs","to":"mqtt://127.0.0.1/S2m7DGh9dPe?ct=json",
+        "fr":"/Mobius2",
+        "pc":{
+            "m2m:sgn":{
+                "sur":"Mobius/rpi4/radar/mobiususer02.MOBIUS.BROWSER.WEB_sub",
+                "nev":{
+                    "rep":{
+                        "m2m:cin":{
+                            "rn":"4-20210910020904321","ty":4,
+                            "pi":"3-20210909042538192575",
+                            "ri":"4-20210910020904321095",
+                            "ct":"20210910T020904",
+                            "lt":"20210910T020904",
+                            "st":166,"et":"20230910T020904",
+                            "cs":11,
+                            "con":
+                                {"key":"128"},
+                                "cr":"Srpi4"
+                            }
+                        },
+                        "net":3
+                    },
+                    "rvi":"2a"
+                }
+            }
+        }`
       },
       receiveNews: '',
       qosList: [
@@ -304,7 +330,7 @@ export default {
         this.receiveNews = this.receiveNews.concat(message)
         console.log(`Received message ${message} from topic ${topic}`)
         let json_ver = JSON.parse(message)
-        
+        this.$emit('new_mqtt_msg', json_ver)
         console.log('Sent Message')
       })
     },

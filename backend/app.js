@@ -29,57 +29,57 @@ var mob_db_connection = mysql.createConnection({
 })
 
 //Connect Connections
-connection.connect(function (err){
-	if(err){
-console.error('mysql pwa_crud connection error');
-console.error(err);
-throw err;
-}
+connection.connect(function (err) {
+	if (err) {
+		console.error('mysql pwa_crud connection error');
+		console.error(err);
+		throw err;
+	}
 });
 
-mob_db_connection.connect(function (err){
-	if(err){
-console.error('mysql mobiusdb connection error');
-console.error(err);
-throw err;
+mob_db_connection.connect(function (err) {
+	if (err) {
+		console.error('mysql mobiusdb connection error');
+		console.error(err);
+		throw err;
 	}
 })
 
 // MySQL REST API Calls
 
-//Login / User Related Calls
-app.post('regist',function (req, res ) {
-var user = {
-	'userid' : req.body.userid,
-	'name' : req.body.name,
-	'address' : req.body.address
-};
-var query = connection.query('insert into user set ? ', user, function (err , result) {
-if (err) {
-console.error(err);
-	throw err;
-}
-res.status(200).send('success');
-});
+//Login / User API Calls
+app.post('/api/users/signUp', function (req, res) {
+	var user = {
+		'userid': req.body.userid,
+		'name': req.body.name,
+		'address': req.body.address
+	};
+	var query = connection.query('insert into user set ? ', user, function (err, result) {
+		if (err) {
+			console.error(err);
+			throw err;
+		}
+		res.status(200).send('success');
+	});
 });
 
-//Mobius DB Calls
+//VueGraph API Calls
 
 app.get('/api/mob_ae', function (req, res) {
 	connection.query('SELECT ri FROM mobiusdb.ae', function (err, rows) {
-	  if (err) throw err;
-	  let result = JSON.parse(JSON.stringify(rows))
-	  res.send(result);
+		if (err) throw err;
+		let result = JSON.parse(JSON.stringify(rows))
+		res.send(result);
 	});
-  });
+});
 
 app.get('/api/mob_cnt', function (req, res) {
 	connection.query('SELECT ri FROM mobiusdb.cnt', function (err, rows) {
-	  if (err) throw err;
-	  let result = JSON.parse(JSON.stringify(rows))
-	  res.send(result);
+		if (err) throw err;
+		let result = JSON.parse(JSON.stringify(rows))
+		res.send(result);
 	});
-  });
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -95,19 +95,19 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(function (req, res, next) {
+	next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 module.exports = app;
