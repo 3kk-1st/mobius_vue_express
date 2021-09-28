@@ -1,6 +1,15 @@
 <template>
   <div id="container">
-    <Mqtt v-on:new_mqtt_msg="addCin" />
+    <v-btn
+          color="pink"
+          dark
+          @click.stop="drawer = !drawer"
+        >
+        Toggle Connection Menu
+    </v-btn>
+    <v-navigation-drawer v-model="drawer" width="60%" absolute temporary>
+      <Mqtt v-on:new_mqtt_msg="addCin" />
+    </v-navigation-drawer>
     <div class="graph">
       <d3-network :net-nodes="nodes" :net-links="links" :options="options" />
     </div>
@@ -19,6 +28,7 @@ export default {
   },
   data() {
     return {
+      drawer: null,
       nodes: [
         {
           id: 0,
@@ -186,9 +196,6 @@ export default {
   display: flex;
   width: 100%;
   height: 100%;
-}
-#graph {
-  
 }
 </style>
 

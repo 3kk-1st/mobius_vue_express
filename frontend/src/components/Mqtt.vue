@@ -4,6 +4,7 @@
         <!--flexbox for connect options and connecting -->
 
         <div class='flex-config'>
+          <p>Connection Options</p>
             <div class='flex-config-input'>
                 <p>Host</p>
                 <v-text-field v-model="connection.host" placeholder="localhost">
@@ -22,20 +23,20 @@
             </div>
             <div class='flex-config-input'>
                 <div class='display-status'>
-                    <p>Currently client connected status is: {{ client.connected }}</p>
+                    <p>Connection Status: {{ client.connected }}</p>
                 </div>
             </div>
         </div>
 
         <!--flexbox for subscribe -->
-
+        <p>Subscribe Options</p>
         <div class='flex-config'>
             <div class='flex-config-input'>
-                <p>Host</p>
+                <p>Topic</p>
                 <v-text-field v-model="subscription.topic" placeholder="topic/mqttx">
             </div>
             <div class='flex-config-input'>
-                <p>Port</p>
+                <p>Qos</p>
                 <v-text-field v-model.number="subscription.qos" placeholder="0">
             </div>
             <div class='flex-config-input'>
@@ -44,24 +45,24 @@
             </div>
             <div class='flex-config-input'>
                 <div class='display-status'>
-                    <p>Currently client subscribed status is: {{ subscribeSuccess }}</p>
+                    <p>Subscription Status: {{ subscribeSuccess }}</p>
                 </div>
             </div>
         </div>
 
         <!-- flexbox for publish -->
-
+        <p>Publish Options</p>
         <div class='flex-config'>
             <div class='flex-config-input'>
-                <p>Host</p>
+                <p>Topic</p>
                 <v-text-field v-model="publish.topic" placeholder="topic/mqttx">
             </div>
             <div class='flex-config-input'>
-                <p>Port</p>
+                <p>Qos</p>
                 <v-text-field v-model.number="subscription.qos" placeholder="0">
             </div>
             <div class='flex-config-input'>
-                <p>Host</p>
+                <p>Message</p>
                 <v-text-field v-model="publish.payload">
             </div>
             <div class='flex-config-input'>
@@ -72,7 +73,8 @@
         <!-- flexbox for received inputs -->
         <div class='flex-config'>
             <div class='flex-config-input'>
-                <v-text-field id='message-box' v-model='receiveNews'>
+              <p>Received Messages </p>
+              <v-text-field id='message-box' v-model='receiveNews'>
             </div>
         </div>
 
