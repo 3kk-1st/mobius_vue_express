@@ -21,7 +21,7 @@ export const router = new Router({
       component: SignUp
     },
     {
-      path: '/resource_viewer',
+      path: '/graph',
       name: 'VueGraph',
       component: VueGraph
     },

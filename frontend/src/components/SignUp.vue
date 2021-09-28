@@ -30,24 +30,31 @@ export default {
   },
 
   methods: {
-    signUp: function (event) {
+    signUp: function () {
       this.$http
         .post("/api/users/signUp", {
           user: this.user,
         })
         .then((res) => {
-          if (res.data.success == ture) {
+          if (res.data.success == true) {
             alert(res.data.message);
-            router.push({name: 'Login'});
+            this.$router.push({name: 'Login'});
           }
           if (res.data.success == false) {
             alert(res.data.message);
           }
         })
         .catch(function (error) {
-          alert("error");
+          alert(error);
         });
     },
   },
 };
 </script>
+<style>
+.input_row{
+  position: relative;
+  margin: 10px 0;
+}
+
+</style>

@@ -31,7 +31,7 @@ export default {
       .then(
         (res) => {  //로그인 성공
           alert(res.data.message);
-          router.push({ name: 'MainMenu' })
+          this.$router.push({ name: 'MainMenu' })
         },
         (err) => { // error 를 보여줌
           alert('Login failed! please check your id or password' + err);
