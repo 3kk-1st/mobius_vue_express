@@ -1,6 +1,8 @@
 <template>
   <div id="container">
-    <Mqtt v-on:new_mqtt_msg="addCin" />
+    <v-navigation-drawer absolute temporary>
+      <Mqtt v-on:new_mqtt_msg="addCin" />
+    </v-navigation-drawer>
     <div class="graph">
       <d3-network :net-nodes="nodes" :net-links="links" :options="options" />
     </div>
