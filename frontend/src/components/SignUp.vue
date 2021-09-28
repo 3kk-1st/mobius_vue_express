@@ -51,7 +51,6 @@ export default {
   },
 };
 </script>
-<<<<<<< HEAD
 
 <style>
 .input_row{
@@ -91,12 +90,3 @@ input:focus, input:not(:placeholder-shown){
   outline:none;
 }
 </style>
-=======
-<style>
-.input_row{
-  position: relative;
-  margin: 10px 0;
-}
-
-</style>
->>>>>>> 09a19edb1b60b076b7a086afcf36c940c64a5c39
