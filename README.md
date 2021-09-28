@@ -6,3 +6,4 @@ https://wiselog.tistory.com/2
 - MQTT Mosquitto websockets install instructions for linux 
 
 9/28 slack connect!
+9/28 pull request!
