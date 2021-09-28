@@ -55,6 +55,38 @@ export default {
 <style>
 .input_row{
 position: relative;
-margin: 10px 0;
+margin: 10px 0; 
+}
+.input_row > input{
+  background:transparent;
+  border: none;
+  border-bottom: solid 1px #ccc;
+  padding: 20px 0px 5px 0px;
+  font-size: 14px;
+  width: 100%;
+}
+input::placeholder{
+  color: transparent;
+}
+input:placeholder-shown + label{
+  color: #aaa;
+  font-size: 14px;
+  top: 15px;
+}
+input:focus + label, label{
+  color: #8aa1a1;
+  font-size: 10pt;
+  pointer-events: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
+input:focus, input:not(:placeholder-shown){
+  border-bottom: soild 1px #8aa1a1;
+  outline:none;
 }
 </style>
