@@ -1,7 +1,7 @@
 <template>
-  <div id="container">
+  <div>
     <v-btn
-          color="pink"
+          color="green"
           dark
           @click.stop="drawer = !drawer"
         >
@@ -10,9 +10,7 @@
     <v-navigation-drawer v-model="drawer" width="60%" absolute temporary>
       <Mqtt v-on:new_mqtt_msg="addCin" />
     </v-navigation-drawer>
-    <div class="graph">
-      <d3-network :net-nodes="nodes" :net-links="links" :options="options" />
-    </div>
+    <d3-network :net-nodes="nodes" :net-links="links" :options="options" />
   </div>
 </template>
 
@@ -50,6 +48,10 @@ export default {
         nodeSize: 20,
         nodeLabels: true,
         linkWidth: 5,
+        size: {
+          w:window.innerWidth,
+          h:window.innerWidth  //if this isn't set, it gets really small
+        }
       },
     };
   },
@@ -191,9 +193,9 @@ export default {
 </script>
 
 
-<style src="vue-d3-network/dist/vue-d3-network.css">
-#container {
-  display: flex;
+<style src="../../node_modules/vue-d3-network/dist/vue-d3-network.css">
+.container {
+  display: block;
   width: 100%;
   height: 100%;
 }
