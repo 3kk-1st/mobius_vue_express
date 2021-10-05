@@ -49,8 +49,8 @@ export default {
         nodeLabels: true,
         linkWidth: 5,
         size: {
-          w:window.innerWidth,
-          h:window.innerWidth  //if this isn't set, it gets really small
+          w:1576,
+          h:800  //if this isn't set, it gets really small
         }
       },
     };
@@ -178,9 +178,9 @@ export default {
         vm.cinNodeRef[split_url].push(nodelink);
       }
       if (split_url in vm.cinNodeRef) {
-        if (vm.cinNodeRef[split_url].length > 3) {
+        if (vm.cinNodeRef[split_url].length > 2) { //used to be 3 
           //limit of 3 cin values
-          let pop_val = vm.cinNodeRef[split_url].pop(0); //remove oldest value
+          let pop_val = vm.cinNodeRef[split_url].shift(); //remove oldest value
           vm.removeNode(pop_val); //use oldest value to remove from nodes and links
           vm.cinNodeRef[split_url].push(nodelink); //add new val
         } else {

@@ -9,6 +9,7 @@
       <v-text-field type="password" id="password" v-model="user.password">
     </div>
     <v-btn elevation="2" v-on:click="login">로그인</v-btn>
+    <router-link to="/">Go to Sign Up</router-link>
   </div>
 </template>
 
@@ -29,13 +30,17 @@ export default {
         user: this.user
       })
       .then(
-        (res) => {  //로그인 성공
-          alert(res.data.message);
-          this.$router.push({ name: 'MainMenu' })
-        },
-        (err) => { // error 를 보여줌
-          alert('Login failed! please check your id or password' + err);
-      })
+        (res) => {
+          console.log(res)
+          if (res.data == 'success') {
+            alert(res.data);
+            this.$router.push({ name: 'MainMenu' })
+          }
+          else {
+            alert(res.data)
+          }
+        }
+        )
       .catch(err => {
         alert(err);
       })

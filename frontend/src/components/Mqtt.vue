@@ -112,7 +112,7 @@ export default {
         password: '',
       },
       subscription: {
-        topic: 'topic/mqttx',
+        topic: 'topic/mqttx',  // this is the topic for mobius /oneM2M/req/Mobius2/S2m7DGh9dPe/json
         qos: 0,
       },
       publish: {

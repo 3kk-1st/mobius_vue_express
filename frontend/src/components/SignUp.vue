@@ -13,7 +13,7 @@
       <v-text-field id="password" v-model="user.password" />
     </div>
     <v-btn elevation="2" v-on:click="signUp">가입하기</v-btn>
-    <router-link :to="{ name: 'Login'}"> 
+    <router-link to="/login">Go to Login</router-link>
   </div>
 </template>
 
@@ -31,20 +31,24 @@ export default {
 
   methods: {
     signUp: function () {
-      this.$http
-        .post("/api/users/signUp", {
+      this.$http.post("/api/users/signUp", {
           user: this.user,
         })
         .then((res) => {
-          if (res.data.success == true) {
-            alert(res.data.message);
+          console.log(res)
+          if (res.data == 'success') {
+            console.log('success')
+            alert(res.data);
             this.$router.push({name: 'Login'});
           }
-          if (res.data.success == false) {
-            alert(res.data.message);
+          if (res.data == 'failure') {
+            console.log('false')
+            console.log(res.data)
+            alert(res.data);
           }
         })
         .catch(function (error) {
+          console.log('err')
           alert(error);
         });
     },
