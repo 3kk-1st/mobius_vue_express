@@ -4,6 +4,7 @@ import UserList from '@/components/UserList'
 import VueGraph from '@/components/VueGraph'
 import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
+import MainMenu from '@/components/MainMenu'
 
 
 Vue.use(Router)
@@ -16,12 +17,12 @@ export const router = new Router({
       component: Login
     },
     {
-      path: '/signup',
+      path: '/',
       name: 'SignUp',
       component: SignUp
     },
     {
-      path: '/',
+      path: '/vuegraph',
       name: 'VueGraph',
       component: VueGraph
     },
@@ -29,6 +30,11 @@ export const router = new Router({
       path: '/userlist',
       name: 'UserList',
       component: UserList
+    },
+    {
+      path: '/mainmenu',
+      name: 'MainMenu',
+      component: MainMenu
     }
   ]
 })

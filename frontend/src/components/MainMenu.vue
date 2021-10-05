@@ -1,7 +1,11 @@
 <template>
     <div>
-        <router-link :to="{ name: 'UserList'}">
-        <router-link :to="{ name: 'VueGraph'}">    
+        <v-card>
+            <router-link to="/vuegraph">Go to Resource Browser</router-link>
+        </v-card>
+        <v-card>
+            <router-link to="/userlist">Go to User List</router-link>  
+        </v-card>
     </div>
 </template>
 
