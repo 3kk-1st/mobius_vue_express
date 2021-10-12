@@ -9,7 +9,7 @@
       <v-text-field type="password" id="password" v-model="user.password">
     </div>
     <v-btn elevation="2" v-on:click="login">로그인</v-btn>
-    <router-link to="/">Go to Sign Up</router-link>
+    <v-btn elevation="2" v-on:click="goToSignUp">Go to Sign Up</v-btn>
   </div>
 </template>
 
@@ -25,6 +25,9 @@ export default {
     }
   },
   methods: {
+    goToSignUp () {
+      this.$router.push({ name: 'SignUp' })
+    },
     login() {
       this.$http.post('/api/users/login', {
         user: this.user
