@@ -13,7 +13,7 @@
       <v-text-field id="password" v-model="user.password" />
     </div>
     <v-btn elevation="2" v-on:click="signUp">가입하기</v-btn>
-    <router-link to="/login">Go to Login</router-link>
+    <v-btn elevation="2" v-on:click="goToLogin">Go To Login</v-btn>
   </div>
 </template>
 
@@ -30,6 +30,9 @@ export default {
   },
 
   methods: {
+    goToLogin () {
+      this.$router.push({ name: 'Login' })
+    },
     signUp: function () {
       this.$http.post("/api/users/signUp", {
           user: this.user,
