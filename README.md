@@ -1,5 +1,9 @@
 # mobius_vue_express
 
+Node.js version: 10.13.0
+Npm version: 6.4.1
+
+
 mobius connect vue , express , ncube
 
 
