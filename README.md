@@ -35,7 +35,7 @@ mosquitto config file: <br/>
 파일별 프로그램 설명:
 
 frontend:
-* 코드를 바꿀때마다 해당 폴더 안으로 cd 한 다음에 npm run build / 아니면 백앤드를 npm run start으로 띄워놓고 npm run serve 해도 됩니다(이게 아
+* 코드를 바꿀때마다 해당 폴더 안으로 cd 한 다음에 npm run build / 아니면 백앤드를 npm run start으로 띄워놓고 npm run serve 해도 됩니다(이게 아마 더 편할겁니다)
 * src/router/index.js은 url 라우팅을 담당합니다
 * src/components 페이지마다 컴포넌트가 있습니다 src/router/index.js에서 설명을 해놨습니다 
 * plugins/vuetify.js 이 페이지가 있어야지 vuetify가 돌아갑니다. vuetify는 vue.js를 위한 많은 ui library 중 하나입니다. 
