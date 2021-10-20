@@ -11,15 +11,15 @@
               <v-card-subtitle>Connection Status: {{ client.connected }}</v-card-subtitle>
               <div class='flex-config-input'>
                   <p>Host</p>
-                  <v-text-field v-model="connection.host" placeholder="localhost">
+                  <v-text-field v-model="connection.host" placeholder="localhost" />
               </div>
               <div class='flex-config-input'>
                   <p>Port</p>
-                  <v-text-field v-model.number="connection.port" placeholder="9001">
+                  <v-text-field v-model.number="connection.port" placeholder="9001" />
               </div>
               <div class='flex-config-input'>
                   <p>Mountpoint / Endpoint</p>
-                  <v-text-field v-model="connection.endpoint" placeholder="/mqtt">
+                  <v-text-field v-model="connection.endpoint" placeholder="/mqtt"></v-text-field>
               </div>
               <div class='flex-config-input'>
                   <v-btn class="mx-2" color="#66BB6A" v-on:click='createConnection'>Connect</v-btn>
@@ -37,11 +37,11 @@
             <v-card-subtitle>Subscription Status: {{ subscribeSuccess }}</v-card-subtitle>
               <div class='flex-config-input'>
                   <p>Topic</p>
-                  <v-text-field v-model="subscription.topic" placeholder="topic/mqttx">
+                  <v-text-field v-model="subscription.topic" placeholder="topic/mqttx"></v-text-field>
               </div>
               <div class='flex-config-input'>
                   <p>Qos</p>
-                  <v-text-field v-model.number="subscription.qos" placeholder="0">
+                  <v-text-field v-model.number="subscription.qos" placeholder="0"></v-text-field>
               </div>
               <div class ='flex-config-input'>
                   <v-btn class="mx-2" color="#66BB6A" v-on:click='doSubscribe'>Subscribe</v-btn>
@@ -60,15 +60,15 @@
               <v-card-title class="text-h5">Publish Options</v-card-title>
                 <div class='flex-config-input'>
                     <p>Topic</p>
-                    <v-text-field v-model="publish.topic" placeholder="topic/mqttx">
+                    <v-text-field v-model="publish.topic" placeholder="topic/mqttx"></v-text-field>
                 </div>
                 <div class='flex-config-input'>
                     <p>Qos</p>
-                    <v-text-field v-model.number="subscription.qos" placeholder="0">
+                    <v-text-field v-model.number="subscription.qos" placeholder="0"></v-text-field>
                 </div>
                 <div class='flex-config-input'>
                     <p>Message</p>
-                    <v-textarea v-model="publish.payload">
+                    <v-textarea v-model="publish.payload" />
                 </div>
                 <div class='flex-config-input'>
                     <v-btn class="mx-2" color="#66BB6A" v-on:click='doPublish'>Publish</v-btn>
@@ -83,7 +83,7 @@
           <v-col>
             <v-card color="white" elevation="24">
               <v-card-title style="text-h5">Received Messages</v-card-title>
-              <v-textarea v-model='receiveNews'>
+              <v-model='receiveNews'>
             </v-card>
           </v-col>
         </v-row>
