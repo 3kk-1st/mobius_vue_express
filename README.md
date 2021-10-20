@@ -20,7 +20,7 @@ dependency 설치:
 dependency:
 * Node.js version: 10.13.0
 * Npm version: 6.4.1
-* @vue/cli 4.5.13 을 통해서 프로젝트 생성
+* @vue/cli 4.5.13 을 통해서 프로젝트 생성 --> Vue 2 사용
 * ubuntu 20.04에서 개발되었습니다. 
 
 mosquitto mqtt: sudo apt-get install mosquitto 
