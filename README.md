@@ -3,20 +3,27 @@
 * Node.js version: 10.13.0
 * Npm version: 6.4.1
 
+dependency 설치:
+1. github에서 zip파일 다운받습니다
+2. cd backend --> npm install
+3. cd frontend --> npm install 
 
-mobius connect vue , express , ncube
+구동방법:
+두가지 방법이 있습니다.
+1. 빌드 + 백앤드 서버 띄우기
+   * cd frontend --> npm run build
+   * cd backend --> npm run start
+   * 아마 로컬호스트 3000포트에 서버가 열리면 그걸 들어가면 될겁니다. 
+2. vue.js 서버 cli 사용 (개발/디버깅 용도)
+   * cd backend --> npm run start
+   * cd frontend --> npm run serve
+   * 아마 로컬호스트 8080포트에 서버가 열리면 그걸 들어가면 될겁니다. 
+   * 파일을 수정하고 세이브하면 페이지가 리로딩 될겁니다. 
 
-
-9/28 slack connect!
-
-
-사용한 튜토리얼들:
-* https://medium.com/hivelab-dev/vue-express-mysql-part1-98f68408d444
-* https://medium.com/hivelab-dev/vue-express-mysql-part2-6d8fc0e497de
-* https://medium.com/hivelab-dev/vue-express-mysql-part3-3161bbb6c624
-
-프로그램 설치: 
-vue-cli를 통해서 프로젝트 생성
+dependency:
+node -v --> 10.13.0
+npm -v --> 6.4.1
+@vue/cli 4.5.13 을 통해서 프로젝트 생성
 ubuntu 20.04에서 개발되었습니다. 
 
 mosquitto mqtt: sudo apt-get install mosquitto 
@@ -31,6 +38,11 @@ mosquitto config file: <br/>
 * 9001 포트에는 웹소켓 포트가 열립니다. mqtt는 웹 브라우저로 직접 통신이 불가능하기에 웹소켓을 통한 포트가 필요합니다. 
 * 테스팅때 사용하던 모비우스 코드는 물어보시면 드리겠습니다
 
+
+사용한 튜토리얼들:
+* https://medium.com/hivelab-dev/vue-express-mysql-part1-98f68408d444
+* https://medium.com/hivelab-dev/vue-express-mysql-part2-6d8fc0e497de
+* https://medium.com/hivelab-dev/vue-express-mysql-part3-3161bbb6c624
 
 파일별 프로그램 설명:
 
