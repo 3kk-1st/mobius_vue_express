@@ -1,8 +1,5 @@
 # mobius_vue_express
 
-* Node.js version: 10.13.0
-* Npm version: 6.4.1
-
 dependency 설치:
 1. github에서 zip파일 다운받습니다
 2. cd backend --> npm install
@@ -21,10 +18,10 @@ dependency 설치:
    * 파일을 수정하고 세이브하면 페이지가 리로딩 될겁니다. 
 
 dependency:
-node -v --> 10.13.0
-npm -v --> 6.4.1
-@vue/cli 4.5.13 을 통해서 프로젝트 생성
-ubuntu 20.04에서 개발되었습니다. 
+* Node.js version: 10.13.0
+* Npm version: 6.4.1
+* @vue/cli 4.5.13 을 통해서 프로젝트 생성
+* ubuntu 20.04에서 개발되었습니다. 
 
 mosquitto mqtt: sudo apt-get install mosquitto 
 mosquitto config file: <br/>
