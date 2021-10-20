@@ -9,13 +9,15 @@ dependency 설치:
 두가지 방법이 있습니다.
 1. 빌드 + 백앤드 서버 띄우기
    * cd frontend --> npm run build
-   * cd backend --> npm run start
+   * cd backend --> npm run start (업데이트 된 빌드 코드가 실행이 됩니다)
    * 아마 로컬호스트 3000포트에 서버가 열리면 그걸 들어가면 될겁니다. 
 2. vue.js 서버 cli 사용 (개발/디버깅 용도)
    * cd backend --> npm run start
    * cd frontend --> npm run serve
    * 아마 로컬호스트 8080포트에 서버가 열리면 그걸 들어가면 될겁니다. 
    * 파일을 수정하고 세이브하면 페이지가 리로딩 될겁니다. 
+* 개발할때 vscode 터미널창을 2개 띄워놓으면 편합니다. 
+
 
 dependency:
 * Node.js version: 10.13.0
@@ -44,15 +46,12 @@ mosquitto config file: <br/>
 파일별 프로그램 설명:
 
 frontend:
-* 코드를 바꿀때마다 해당 폴더 안으로 cd 한 다음에 npm run build / 아니면 백앤드를 npm run start으로 띄워놓고 npm run serve 해도 됩니다(이게 아마 더 편할겁니다)
 * src/router/index.js은 url 라우팅을 담당합니다
 * src/components 페이지마다 컴포넌트가 있습니다 src/router/index.js에서 설명을 해놨습니다 
 * plugins/vuetify.js 이 페이지가 있어야지 vuetify가 돌아갑니다. vuetify는 vue.js를 위한 많은 ui library 중 하나입니다. 
   * https://vuetifyjs.com/en/
 
 backend:
-* npm run build 를 frontend에서 실행한다음에 백엔드 폴더 안으로 cd 한 다음에 npm run start 실행하면 업데이트 된 코드가 실행이 됩니다
-  * 개발할때 vscode 터미널창을 2개 띄워놓으면 편합니다. 
 * app.js 파일이 메인 파일입니다. express 서버가 있고, 그리고 express 서버를 위한 REST API 라우팅이 되있습니다.
 * public 폴더 안에는 프론트단에서 npm run build로 패키지된 html css javascript 가 있습니다. 
 
