@@ -20,6 +20,7 @@ dependency 설치:
 
 
 Subscribe 해야하는 MQTT Topic: /oneM2M/req/Mobius2/S2m7DGh9dPe/json
+MQTT Connection Host: 192.168.200 이런 류의 것이 안된다면 localhost를 사용하시면 됩니다. 
 
 
 dependency:
