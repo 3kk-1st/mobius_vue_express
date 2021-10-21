@@ -25,7 +25,8 @@ dependency:
 * @vue/cli 4.5.13 을 통해서 프로젝트 생성 --> Vue 2 사용
 * ubuntu 20.04에서 개발되었습니다. 
 
-mosquitto mqtt: sudo apt-get install mosquitto 
+mosquitto mqtt: sudo apt-get install mosquitto <br />
+VERSION: mosquitto 1.6.9 !!!!!! <br />
 mosquitto config file: <br/>
 * cd /etc/mosquitto/conf.d 한 다음에
 * mosquitto.conf 라는 파일이 없으면 생성합니다 
