@@ -19,6 +19,9 @@ dependency 설치:
 * 개발할때 vscode 터미널창을 2개 띄워놓으면 편합니다. 
 
 
+Subscribe 해야하는 MQTT Topic: /oneM2M/req/Mobius2/S2m7DGh9dPe/json
+
+
 dependency:
 * Node.js version: 10.13.0
 * Npm version: 6.4.1
